@@ -1,0 +1,20 @@
+{
+  "name": "specblog",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "lucide-vue-next": "^0.564.0",
+    "nuxt": "^4.3.1",
+    "tailwindcss": "^4.1.18",
+    "vue": "^3.5.28",
+    "vue-router": "^4.6.4"
+  }
+}
