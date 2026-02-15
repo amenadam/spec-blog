@@ -32,9 +32,7 @@ const { state: isOpen, toggle } = useToggle(false);
       >Subscribe</NuxtLink
     >
   </nav>
-  <div
-    class="absolute md:hidden top-5 z-1000 right-5 cursor-pointer text-white"
-  >
+  <div class="fixed md:hidden top-5 z-1000 right-5 cursor-pointer text-white">
     <Menu v-if="!isOpen" @click="toggle" />
     <X v-if="isOpen" @click="toggle" />
   </div>

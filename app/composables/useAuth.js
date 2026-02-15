@@ -13,10 +13,13 @@ export const useAuth = () => {
 
   const login = async (email, password) => {
     try {
-      const res = await $fetch("http://localhost:5500/api/auth/login", {
-        method: "POST",
-        body: { email, password },
-      });
+      const res = await $fetch(
+        "https://spec-blog-backend.vercel.app/api/auth/login",
+        {
+          method: "POST",
+          body: { email, password },
+        },
+      );
 
       if (!res.success) throw new Error(res.message);
 

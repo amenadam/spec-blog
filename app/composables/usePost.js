@@ -1,6 +1,6 @@
 export const usePost = () => {
   const { data, pending, error } = useFetch(
-    "http://localhost:5500/api/blog/all",
+    "https://spec-blog-backend.vercel.app/api/blog/all",
     {
       transform: (response) => response.blogs,
     },
@@ -11,7 +11,7 @@ export const usePost = () => {
 
 export const useOnePost = (id) => {
   const { data, pending, error } = useFetch(
-    "http://localhost:5500/api/blog/" + id,
+    "https://spec-blog-backend.vercel.app/api/blog/" + id,
     {
       transform: (response) => response.post,
     },
@@ -23,10 +23,13 @@ export const useOnePost = (id) => {
 export const useAdminPost = () => {
   const newPost = async (title, discription, imageUrl, category) => {
     try {
-      const res = await $fetch("http://localhost:5500/api/blog/create", {
-        method: "POST",
-        body: { title, discription, imageUrl, category },
-      });
+      const res = await $fetch(
+        "https://spec-blog-backend.vercel.app/api/blog/create",
+        {
+          method: "POST",
+          body: { title, discription, imageUrl, category },
+        },
+      );
 
       if (!res.success) throw new Error(res.message);
 
@@ -40,7 +43,7 @@ export const useAdminPost = () => {
   const deletePost = async (postId) => {
     try {
       const res = await $fetch(
-        "http://localhost:5500/api/blog/delete/" + postId,
+        "https://spec-blog-backend.vercel.app/api/blog/delete/" + postId,
         {
           method: "POST",
         },

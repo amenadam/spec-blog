@@ -7,12 +7,15 @@ export const useLike = () => {
       loading.value = true;
       error.value = null;
 
-      const res = await $fetch("http://localhost:5500/api/blog/like", {
-        method: "POST",
-        body: {
-          id: postId,
+      const res = await $fetch(
+        "https://spec-blog-backend.vercel.app/api/blog/like",
+        {
+          method: "POST",
+          body: {
+            id: postId,
+          },
         },
-      });
+      );
 
       if (!res.success) {
         throw new Error(res.message);

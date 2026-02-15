@@ -20,7 +20,7 @@ const handleLike = () => {
 
 <template>
   <div
-    class="w-full md:w-60 rounded-lg border border-gray-400/50 overflow-hidden pb-3"
+    class="flex-none w-2/3 md:w-1/3 mr-8 md:pb-4 border rounded-lg border-gray-400/50 overflow-hidden pb-3"
   >
     <img :src="post.image" alt="" class="w-full rounded-lg" />
     <div class="px-3">
