@@ -4,6 +4,8 @@ import { useAuth } from "../../composables/useAuth";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { refreshNuxtData } from "nuxt/app";
+import { useContactMessages } from "../../composables/useContact";
+
 definePageMeta({
   middleware: "auth",
 });
@@ -19,7 +21,7 @@ const { logout } = useAuth();
 
 const { posts, pending, error } = usePost();
 const { newPost, deletePost } = useAdminPost();
-
+const { msg } = useContactMessages();
 const handleNewPost = async () => {
   const success = await newPost(
     title.value,
@@ -61,7 +63,7 @@ const handleDeletePost = async (id) => {
     <p>Welcome back!</p>
     <hr />
     <div class="flex justify-between px-5">
-      <div class="mt-3">
+      <div class="mt-3 md:min-w-200">
         <h1>Posts</h1>
         <h1 v-if="!posts">No Post available</h1>
         <table v-if="posts" class="w-full text-center">
@@ -88,6 +90,27 @@ const handleDeletePost = async (id) => {
                   Delete
                 </button>
               </td>
+            </tr>
+          </tbody>
+        </table>
+        <h1 class="mt-8">Messages from contact form</h1>
+        <table v-if="msg" class="w-full text-center mt-2">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border px-2">#</th>
+              <th class="border px-2">Sender Name</th>
+              <th class="border px-2">Email</th>
+              <th class="border px-2">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(message, index) in msg" class="border py-1">
+              <td class="border py-1">{{ index + 1 }}</td>
+              <td class="border py-1 text-left pl-3 pr-2">
+                {{ message?.fullName }}
+              </td>
+              <td class="border py-1 px-2">{{ message?.email }}</td>
+              <td class="border py-1">{{ message?.message }}</td>
             </tr>
           </tbody>
         </table>
